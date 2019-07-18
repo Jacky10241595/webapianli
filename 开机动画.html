@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>开机动画</title>
+  <style>
+    .box {
+      width: 322px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .bd {
+      height: 105px;
+      transition: all 600ms;
+    }
+
+    .box {
+      transition: all 600ms;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <span id="closeButton"></span>
+    <div class="hd" id="headPart">
+      <img src="images/t.jpg" alt="" />
+    </div>
+    <div class="bd" id="bottomPart">
+      <img src="images/b.jpg" alt="" />
+    </div>
+  </div>
+</body>
+<script>
+  //实现效果:一个动画结束,进行下一个动画;
+  // 底部的消失动画结束后,把整个盒子宽度变为0
+
+  // 实现关闭按钮功能
+  // 获取按钮
+  let closeButton = document.querySelector('#closeButton');
+  // 获取底部,即下面那张图
+  let bd = document.querySelector('.bd');
+  // 注册点击事件
+  closeButton.onclick = function () {
+    // 做底部消失动画,即把底部高度设置为0
+    bd.style.height = 0;
+  }
+  // 在底部动画结束后,开始整个盒子消失
+  // 注册动画结束事件
+  bd.addEventListener('transitionend',function(){
+    // 把整个盒子宽度变为0
+    document.querySelector('#box').style.width=0;
+  })
+</script>
+
+</html>
